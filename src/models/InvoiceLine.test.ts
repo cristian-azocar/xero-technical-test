@@ -28,11 +28,4 @@ describe('InvoiceLine', () => {
 
     expect(cloned).not.toBe(invoiceLine);
   });
-
-  test('returns a string that represents the object', () => {
-    const invoiceLine = new InvoiceLine(1, 15.32, 4, 'Apple');
-    const str = invoiceLine.toString();
-
-    expect(str.length).toBeGreaterThan(0);
-  });
 });

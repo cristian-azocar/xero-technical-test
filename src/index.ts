@@ -25,7 +25,7 @@ function createInvoiceWithMultipleItemsAndQuantities(): void {
   invoice.addLine(new InvoiceLine(2, 5.21, 1, 'Orange'));
   invoice.addLine(new InvoiceLine(3, 6.21, 5, 'Pineapple'));
 
-  console.log('Total:', invoice.getTotal());
+  console.log(invoice.getTotal());
 }
 
 function removeItem(): void {
@@ -35,7 +35,7 @@ function removeItem(): void {
   invoice.addLine(new InvoiceLine(2, 10.99, 5, 'Banana'));
   invoice.removeLine(1);
 
-  console.log('Total:', invoice.getTotal());
+  console.log(invoice.getTotal());
 }
 
 function mergeInvoices(): void {
@@ -50,7 +50,7 @@ function mergeInvoices(): void {
 
   invoice1.merge(invoice2);
 
-  console.log('Total:', invoice1.getTotal());
+  console.log(invoice1.getTotal());
 }
 
 function cloneInvoice(): void {
@@ -60,7 +60,7 @@ function cloneInvoice(): void {
   invoice.addLine(new InvoiceLine(2, 10.49, 2, 'Watermelon'));
 
   const clonedInvoice = invoice.clone();
-  console.log('Cloned total:', clonedInvoice.getTotal());
+  console.log(clonedInvoice.getTotal());
 }
 
 function invoiceToString(): void {

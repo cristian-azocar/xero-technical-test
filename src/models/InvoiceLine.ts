@@ -20,14 +20,4 @@ export default class InvoiceLine {
   clone(): InvoiceLine {
     return deepCopy(this);
   }
-
-  toString(): string {
-    return [
-      `Item: ${this.description}`,
-      `Quantity: ${this.quantity}`,
-      `Cost: ${this.cost}`,
-      `Total: $${this.getTotal()}`,
-      '',
-    ].join('\n');
-  }
 }

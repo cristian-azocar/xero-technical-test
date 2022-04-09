@@ -120,6 +120,7 @@ describe('Invoice', () => {
 
   test('returns a string that represents the object', () => {
     const invoice = new Invoice();
+    invoice.addLine(new InvoiceLine(1, 10, 1, 'Apple'));
     const str = invoice.toString();
 
     expect(str.length).toBeGreaterThan(0);

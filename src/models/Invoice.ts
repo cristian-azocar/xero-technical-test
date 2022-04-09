@@ -1,3 +1,4 @@
+import CliTable from 'cli-table';
 import InvoiceLine from './InvoiceLine';
 import deepCopy from '../utils/deepCopy';
 
@@ -5,6 +6,19 @@ export default class Invoice {
   invoiceDate: Date;
   invoiceNumber: string;
   lineItems: InvoiceLine[];
+
+  private table = new CliTable({
+    head: ['Item', 'Qty', 'Cost', 'Total'],
+    chars: {
+      top: '-',
+      middle: ' ',
+      bottom: '-',
+      mid: '-',
+      'top-mid': '-',
+      'bottom-mid': '-',
+      'mid-mid': '-',
+    },
+  });
 
   constructor(
     invoiceDate = new Date(),
@@ -63,20 +77,18 @@ export default class Invoice {
   }
 
   toString(): string {
-    const separator = '-'.repeat(25);
-    const itemsString = this.lineItems.reduce((accumulator, line) => {
-      return `${accumulator}${line.toString()}${separator}\n`;
-    }, '');
+    this.table.length = 0;
+    this.lineItems.forEach((line) => {
+      this.table.push([
+        line.description,
+        line.quantity,
+        `$${line.cost}`,
+        `$${line.getTotal().toFixed(2)}`,
+      ]);
+    });
 
-    return [
-      '',
-      separator,
-      `Date: ${this.invoiceDate.toDateString()}`,
-      `Invoice #: ${this.invoiceNumber}`,
-      separator,
-      itemsString,
-      `Total: $${this.getTotal()}`,
-      '',
-    ].join('\n');
+    this.table.push(['', '', 'Total', `$${this.getTotal().toFixed(2)}`]);
+
+    return this.table.toString();
   }
 }
