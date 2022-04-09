@@ -6,7 +6,8 @@
   "scripts": {
     "start": "nodemon src/index.ts",
     "test": "jest",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "build": "tsc"
   },
   "repository": {
     "type": "git",

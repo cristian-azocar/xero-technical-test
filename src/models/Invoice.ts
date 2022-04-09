@@ -1,5 +1,5 @@
 import InvoiceLine from './InvoiceLine';
-import deepCopy from './utils/deepCopy';
+import deepCopy from '../utils/deepCopy';
 
 export default class Invoice {
   invoiceDate: Date;
@@ -33,16 +33,16 @@ export default class Invoice {
   }
 
   removeLine(id: number): void {
-    this.lineItems = this.lineItems.filter((item) => item.id !== id);
+    this.lineItems = this.lineItems.filter((line) => line.id !== id);
   }
 
   getLineById(id: number): InvoiceLine | undefined {
-    return this.lineItems.find((item) => item.id === id);
+    return this.lineItems.find((line) => line.id === id);
   }
 
   getTotal(): number {
     return this.lineItems.reduce(
-      (accumulator, item) => accumulator + item.getTotal(),
+      (accumulator, line) => accumulator + line.getTotal(),
       0
     );
   }
@@ -64,8 +64,8 @@ export default class Invoice {
 
   toString(): string {
     const separator = '-'.repeat(25);
-    const itemsString = this.lineItems.reduce((accumulator, item) => {
-      return `${accumulator}${item.toString()}${separator}\n`;
+    const itemsString = this.lineItems.reduce((accumulator, line) => {
+      return `${accumulator}${line.toString()}${separator}\n`;
     }, '');
 
     return [

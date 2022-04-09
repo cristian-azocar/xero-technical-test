@@ -1,5 +1,5 @@
-import Invoice from './Invoice';
-import InvoiceLine from './InvoiceLine';
+import Invoice from './models/Invoice';
+import InvoiceLine from './models/InvoiceLine';
 
 function main(): void {
   console.log('Welcome to Xero Tech Test!');

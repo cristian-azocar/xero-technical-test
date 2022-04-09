@@ -1,4 +1,4 @@
-import deepCopy from './utils/deepCopy';
+import deepCopy from '../utils/deepCopy';
 
 export default class InvoiceLine {
   id: number;
