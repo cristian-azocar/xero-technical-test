@@ -13,7 +13,9 @@ export default class Invoice {
   ) {
     this.invoiceDate = invoiceDate;
     this.invoiceNumber = invoiceNumber;
-    this.lineItems = lineItems;
+    this.lineItems = [];
+
+    lineItems.forEach((line) => this.addLine(line));
   }
 
   addLine(line: InvoiceLine): void {
@@ -24,6 +26,10 @@ export default class Invoice {
     } else {
       this.lineItems.push(line);
     }
+  }
+
+  addLines(lines: InvoiceLine[]): void {
+    lines.forEach((line) => this.addLine(line));
   }
 
   removeLine(id: number): void {
