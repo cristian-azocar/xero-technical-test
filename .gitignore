@@ -3,3 +3,4 @@ node_modules
 original-code
 dist
 tsconfig.tsbuildinfo
+coverage
