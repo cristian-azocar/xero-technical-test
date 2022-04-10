@@ -1,9 +1,9 @@
-import deepCopy from './deepCopy';
+import deepClone from './deepClone';
 
-describe('deepCopy', () => {
+describe('deepClone', () => {
   test('creates a different instance of a given object', () => {
     const original = { id: 1, name: 'A' };
-    const cloned = deepCopy(original);
+    const cloned = deepClone(original);
 
     expect(cloned).not.toBe(original);
   });
@@ -15,7 +15,7 @@ describe('deepCopy', () => {
       birthDate: new Date(),
       adresses: [{ name: 'Address 1' }, { name: 'Address 2' }],
     };
-    const cloned = deepCopy(original);
+    const cloned = deepClone(original);
 
     cloned.id = 2;
     cloned.birthDate.setMonth(original.birthDate.getMonth() + 1);
@@ -29,7 +29,7 @@ describe('deepCopy', () => {
 
   test('clones an empty array', () => {
     const original: string[] = [];
-    const cloned = deepCopy(original);
+    const cloned = deepClone(original);
 
     original.push('foo');
 
@@ -38,7 +38,7 @@ describe('deepCopy', () => {
 
   test('clones a nested array', () => {
     const original = [['foo']];
-    const cloned = deepCopy(original);
+    const cloned = deepClone(original);
 
     original[0].push('bar');
 
